@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INNUELO CONSULTANCY SERVICES</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #f59e0b;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --success: #10b981;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-left: 10px;
+        }
+        
+        .logo-icon {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 150px 0 80px;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background: #e69008;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            margin-right: 15px;
+        }
+        
+        .btn-primary:hover {
+            background: #f1f5f9;
+        }
+        
+        /* Services Section */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .section-header p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            background: var(--primary);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 30px auto 20px;
+        }
+        
+        .service-content {
+            padding: 0 25px 30px;
+            text-align: center;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .service-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        /* Pricing Section */
+        .pricing-section {
+            background: #f1f5f9;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-header {
+            background: var(--primary);
+            color: white;
+            padding: 30px 20px;
+        }
+        
+        .pricing-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            font-weight: normal;
+        }
+        
+        .pricing-features {
+            padding: 30px 20px;
+        }
+        
+        .pricing-features ul {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .pricing-features ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .pricing-features ul li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.1;
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 70px 0 0;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info i {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-right: 15px;
+            min-width: 20px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        /* Page Content (Simulated) */
+        .page-content {
+            display: none;
+            padding: 100px 0 50px;
+        }
+        
+        .page-content.active {
+            display: block;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            padding: 120px 0 50px;
+            margin-top: 70px;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb li {
+            margin-right: 15px;
+            position: relative;
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumb li:not(:last-child)::after {
+            content: '/';
+            position: absolute;
+            right: -12px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .breadcrumb a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .page-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .content-block {
+            margin-bottom: 50px;
+        }
+        
+        .content-block h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-question {
+            background: white;
+            padding: 20px 25px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover {
+            background: #f1f5f9;
+        }
+        
+        .faq-question i {
+            transition: var(--transition);
+        }
+        
+        .faq-question.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+            background: white;
+        }
+        
+        .faq-answer.active {
+            padding: 20px 25px;
+            max-height: 500px;
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.8rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .header-container {
+                position: relative;
+            }
+            
+            .mobile-nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                display: none;
+            }
+            
+            .mobile-nav.active {
+                display: block;
+            }
+            
+            .mobile-nav ul {
+                list-style: none;
+            }
+            
+            .mobile-nav ul li {
+                margin-bottom: 15px;
+            }
+            
+            .mobile-nav ul li a {
+                text-decoration: none;
+                color: var(--dark);
+                font-weight: 500;
+                display: block;
+                padding: 8px 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 130px 0 60px;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 15px;
+            }
+            
+            .btn-primary {
+                margin-right: 0;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">I</div>
+                <h1>INNUELO</h1>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                    <li><a href="#" class="nav-link" data-page="services">Services</a></li>
+                    <li><a href="#" class="nav-link" data-page="courses">Courses</a></li>
+                    <li><a href="#" class="nav-link" data-page="pricing">Pricing</a></li>
+                    <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-nav">
+            <ul>
+                <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                <li><a href="#" class="nav-link" data-page="services">Services</a></li>
+                <li><a href="#" class="nav-link" data-page="courses">Courses</a></li>
+                <li><a href="#" class="nav-link" data-page="pricing">Pricing</a></li>
+                <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page-content active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h2>Expert Business Solutions For Your Success</h2>
+                <p>INNUELO CONSULTANCY SERVICES provides comprehensive business solutions to help SMEs grow, optimize operations, and maximize profitability in today's competitive market.</p>
+                <a href="#" class="btn btn-primary">Our Services</a>
+                <a href="#" class="btn">Contact Us</a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Professional Services</h2>
+                    <p>Comprehensive solutions tailored to meet your business needs and drive sustainable growth</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Business Consulting</h3>
+                            <p>Strategic planning, market analysis, and growth strategies to help your business thrive in competitive environments.</p>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>SME Accounting</h3>
+                            <p>Complete financial management including bookkeeping, payroll, and financial reporting for small businesses.</p>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Tax Support</h3>
+                            <p>Expert tax planning, preparation, and filing services to minimize liabilities and ensure compliance.</p>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Business Training</h3>
+                            <p>Customized training programs to enhance your team's skills in management, sales, and operations.</p>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fab fa-bitcoin"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Crypto Education</h3>
+                            <p>Comprehensive courses on blockchain technology, cryptocurrency trading, and digital asset management.</p>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="section pricing-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Transparent Pricing</h2>
+                    <p>Affordable packages designed to meet the needs of businesses at every stage</p>
+                </div>
+                
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Starter</h3>
+                            <div class="price">₵1,200<span>/month</span></div>
+                            <p>Perfect for small businesses</p>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li>Basic Bookkeeping</li>
+                                <li>Monthly Financial Reports</li>
+                                <li>Tax Filing Assistance</li>
+                                <li>Email Support</li>
+                                <li>Quarterly Consultation</li>
+                            </ul>
+                            <a href="#" class="btn">Get Started</a>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <div class="popular-badge">POPULAR</div>
+                        <div class="pricing-header">
+                            <h3>Growth</h3>
+                            <div class="price">₵2,500<span>/month</span></div>
+                            <p>Ideal for growing businesses</p>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li>Full Accounting Services</li>
+                                <li>Weekly Financial Reports</li>
+                                <li>Tax Planning & Filing</li>
+                                <li>Priority Support</li>
+                                <li>Monthly Strategy Session</li>
+                                <li>Payroll Management</li>
+                            </ul>
+                            <a href="#" class="btn">Get Started</a>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Enterprise</h3>
+                            <div class="price">₵4,800<span>/month</span></div>
+                            <p>For established businesses</p>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li>Full Financial Management</li>
+                                <li>Custom Financial Dashboards</li>
+                                <li>Strategic Tax Optimization</li>
+                                <li>24/7 Dedicated Support</li>
+                                <li>Weekly Executive Meetings</li>
+                                <li>Business Process Optimization</li>
+                                <li>Crypto Investment Advisory</li>
+                            </ul>
+                            <a href="#" class="btn">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>What Our Clients Say</h2>
+                    <p>Success stories from businesses we've helped transform</p>
+                </div>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"INNUELO's tax expertise saved our company over ₵15,000 in unnecessary taxes last year. Their strategic approach to financial management has been invaluable to our growth."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">AK</div>
+                            <div class="author-info">
+                                <h4>Ama Kwarteng</h4>
+                                <p>CEO, Kwarteng Enterprises</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"The business training program transformed our sales team. We've seen a 35% increase in conversions since implementing their strategies. Highly recommended!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">KO</div>
+                            <div class="author-info">
+                                <h4>Kwame Osei</h4>
+                                <p>Sales Director, Accra Solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"As a small business owner, I was overwhelmed with accounting. INNUELO took over completely, giving me peace of mind and more time to focus on growth."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">EA</div>
+                            <div class="author-info">
+                                <h4>Esi Ansah</h4>
+                                <p>Owner, Nkrumah Fabrics</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about-page" class="page-content">
+        <section class="page-header">
+            <div class="container">
+                <ul class="breadcrumb">
+                    <li><a href="#" data-page="home">Home</a></li>
+                    <li>About Innuelo</li>
+                </ul>
+                <h1 class="page-title">About Innuelo Consultancy</h1>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="page-container">
+                <div class="content-block">
+                    <h3>Our Story</h3>
+                    <p>Founded in 2018, INNUELO CONSULTANCY SERVICES began with a simple mission: to empower Ghanaian businesses with the expertise and tools they need to thrive in an increasingly complex business environment. What started as a small team of financial experts has grown into a comprehensive consultancy serving clients across West Africa.</p>
+                    <p>Our name "Innuelo" comes from the Akan word meaning "knowledge" - reflecting our commitment to providing insightful, knowledge-based solutions that drive real business results.</p>
+                </div>
+                
+                <div class="content-block">
+                    <h3>Our Mission</h3>
+                    <p>To transform the business landscape in Ghana by providing accessible, world-class consultancy services that enable SMEs to overcome challenges, capitalize on opportunities, and achieve sustainable growth.</p>
+                </div>
+                
+                <div class="content-block">
+                    <h3>Our Values</h3>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Innovation</h3>
+                                <p>Continuously developing new approaches to solve business challenges</p>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-hands-helping"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Integrity</h3>
+                                <p>Uncompromising ethical standards in all our engagements</p>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Excellence</h3>
+                                <p>Commitment to delivering exceptional results for every client</p>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Collaboration</h3>
+                                <p>Working as partners with our clients to achieve shared success</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="content-block">
+                    <h3>Our Team</h3>
+                    <p>INNUELO brings together a diverse team of certified accountants, business strategists, tax experts, and financial analysts with extensive experience across multiple industries. Our consultants average 10+ years of experience and hold advanced certifications including:</p>
+                    <ul style="padding-left: 20px; margin-top: 15px;">
+                        <li>Chartered Accountants (CA, Ghana)</li>
+                        <li>Certified Public Accountants (CPA)</li>
+                        <li>Chartered Financial Analysts (CFA)</li>
+                        <li>Certified Management Accountants (CMA)</li>
+                        <li>Blockchain and Cryptocurrency Experts</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Services Page -->
+    <div id="services-page" class="page-content">
+        <section class="page-header">
+            <div class="container">
+                <ul class="breadcrumb">
+                    <li><a href="#" data-page="home">Home</a></li>
+                    <li>Our Services</li>
+                </ul>
+                <h1 class="page-title">Comprehensive Business Solutions</h1>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Professional Services</h2>
+                    <p>Tailored solutions to address your unique business challenges</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Business Consulting</h3>
+                            <p>Strategic planning, market analysis, and growth strategies to help your business thrive in competitive environments.</p>
+                            <ul style="text-align: left; margin-bottom: 20px;">
+                                <li>Business Plan Development</li>
+                                <li>Market Entry Strategy</li>
+                                <li>Operational Efficiency</li>
+                                <li>Competitive Analysis</li>
+                                <li>Growth Strategy</li>
+                            </ul>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>SME Accounting</h3>
+                            <p>Complete financial management including bookkeeping, payroll, and financial reporting for small businesses.</p>
+                            <ul style="text-align: left; margin-bottom: 20px;">
+                                <li>Bookkeeping & Record Keeping</li>
+                                <li>Payroll Management</li>
+                                <li>Financial Reporting</li>
+                                <li>Budgeting & Forecasting</li>
+                                <li>Cash Flow Management</li>
+                            </ul>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Tax Support</h3>
+                            <p>Expert tax planning, preparation, and filing services to minimize liabilities and ensure compliance.</p>
+                            <ul style="text-align: left; margin-bottom: 20px;">
+                                <li>Tax Planning & Strategy</li>
+                                <li>Corporate Tax Filing</li>
+                                <li>VAT & Withholding Tax</li>
+                                <li>Tax Audit Support</li>
+                                <li>Tax Compliance Review</li>
+                            </ul>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Business Training</h3>
+                            <p>Customized training programs to enhance your team's skills in management, sales, and operations.</p>
+                            <ul style="text-align: left; margin-bottom: 20px;">
+                                <li>Leadership Development</li>
+                                <li>Sales & Negotiation Skills</li>
+                                <li>Financial Literacy</li>
+                                <li>Customer Service Excellence</li>
+                                <li>Digital Transformation</li>
+                            </ul>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fab fa-bitcoin"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3>Crypto Education</h3>
+                            <p>Comprehensive courses on blockchain technology, cryptocurrency trading, and digital asset management.</p>
+                            <ul style="text-align: left; margin-bottom: 20px;">
+                                <li>Blockchain Fundamentals</li>
+                                <li>Crypto Investment Strategies</li>
+                                <li>Digital Wallet Security</li>
+                                <li>NFT Creation & Trading</li>
+                                <li>Tax Implications of Crypto</li>
+                            </ul>
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Courses Page -->
+    <div id="courses-page" class="page-content">
+        <section class="page-header">
+            <div class="container">
+                <ul class="breadcrumb">
+                    <li><a href="#" data-page="home">Home</a></li>
+                    <li>Courses</li>
+                </ul>
+                <h1 class="page-title">Professional Development Courses</h1>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Expand Your Business Knowledge</h2>
+                    <p>Practical courses designed for entrepreneurs, managers, and finance professionals</p>
+                </div>
+                
+                <div class="content-block">
+                    <h3 style="text-align: center; margin-bottom: 30px;">Free Courses (YouTube)</h3>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fab fa-youtube"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>SME Finance Basics</h3>
+                                <p>Essential financial management for small business owners</p>
+                                <a href="#" class="btn"><i class="fab fa-youtube"></i> Watch Free</a>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fab fa-youtube"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Tax Filing Guide</h3>
+                                <p>Step-by-step guide to Ghanaian tax compliance</p>
+                                <a href="#" class="btn"><i class="fab fa-youtube"></i> Watch Free</a>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fab fa-youtube"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Crypto 101</h3>
+                                <p>Understanding blockchain and cryptocurrency fundamentals</p>
+                                <a href="#" class="btn"><i class="fab fa-youtube"></i> Watch Free</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="content-block">
+                    <h3 style="text-align: center; margin-bottom: 30px;">Paid Courses</h3>
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Advanced Business Strategy</h3>
+                                <p>Develop winning strategies for competitive advantage</p>
+                                <div class="price" style="margin: 15px 0;">₵850</div>
+                                <a href="#" class="btn">Enroll Now</a>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Financial Analysis Mastery</h3>
+                                <p>Learn to interpret financial statements like a pro</p>
+                                <div class="price" style="margin: 15px 0;">₵950</div>
+                                <a href="#" class="btn">Enroll Now</a>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3>Crypto Investment Certification</h3>
+                                <p>Advanced techniques for digital asset investment</p>
+                                <div class="price" style="margin: 15px 0;">₵1,200</div>
+                                <a href="#" class="btn">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Pricing Page -->
+    <div id="pricing-page" class="page-content">
+        <section class="page-header">
+            <div class="container">
+                <ul class="breadcrumb">
+                    <li><a href="#" data-page="home">Home</a></li>
+                    <li>Pricing</li>
+                </ul>
+                <h1 class="page-title">Service Packages & Pricing</h1>
+            </div>
+        </section>
+        
+        <section class="section pricing-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Transparent Pricing</h2>
+                    <p>Choose the perfect package for your business needs</p>
+                </div>
+                
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Starter</h3>
+                            <div class="price">₵1,200<span>/month</span></div>
+                            <p>Perfect for small businesses</p>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li>Basic Bookkeeping</li>
+                                <li>Monthly Financial Reports</li>
+                                <li>Tax Filing Assistance</li>
+                                <li>Email Support</li>
+                                <li>Quarterly Consultation</li>
+                            </ul>
+                            <a href="#" class="btn">Get Started</a>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <div class="popular-badge">POPULAR</div>
+                        <div class="pricing-header">
+                            <h3>Growth</h3>
+                            <div class="price">₵2,500<span>/month</span></div>
+                            <p>Ideal for growing businesses</p>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li>Full Accounting Services</li>
+                                <li>Weekly Financial Reports</li>
+                                <li>Tax Planning & Filing</li>
+                                <li>Priority Support</li>
+                                <li>Monthly Strategy Session</li>
+                                <li>Payroll Management</li>
+                            </ul>
+                            <a href="#" class="btn">Get Started</a>
+                        </div>
+                    </div>
+                    
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Enterprise</h3>
+                            <div class="price">₵4,800<span>/month</span></div>
+                            <p>For established businesses</p>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li>Full Financial Management</li>
+                                <li>Custom Financial Dashboards</li>
+                                <li>Strategic Tax Optimization</li>
+                                <li>24/7 Dedicated Support</li>
+                                <li>Weekly Executive Meetings</li>
+                                <li>Business Process Optimization</li>
+                                <li>Crypto Investment Advisory</li>
+                            </ul>
+                            <a href="#" class="btn">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-header" style="margin-top: 60px;">
+                    <h2>Course Pricing</h2>
+                    <p>Invest in your professional development</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-content">
+                            <h3>Advanced Business Strategy</h3>
+                            <p>8-week intensive program with expert instructors</p>
+                            <div class="price" style="margin: 15px 0;">₵850</div>
+                            <a href="#" class="btn">Enroll Now</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-content">
+                            <h3>Financial Analysis Mastery</h3>
+                            <p>Comprehensive 12-module certification program</p>
+                            <div class="price" style="margin: 15px 0;">₵950</div>
+                            <a href="#" class="btn">Enroll Now</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-content">
+                            <h3>Crypto Investment Certification</h3>
+                            <p>6-week course on digital assets and blockchain</p>
+                            <div class="price" style="margin: 15px 0;">₵1,200</div>
+                            <a href="#" class="btn">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact-page" class="page-content">
+        <section class="page-header">
+            <div class="container">
+                <ul class="breadcrumb">
+                    <li><a href="#" data-page="home">Home</a></li>
+                    <li>Contact Us</li>
+                </ul>
+                <h1 class="page-title">Get In Touch</h1>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>We'd Love to Hear From You</h2>
+                    <p>Reach out for inquiries, consultations, or support</p>
+                </div>
+                
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h3>Contact Information</h3>
+                        <ul class="contact-info">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>Headquarters</strong><br>
+                                    123 Business Avenue, Accra, Ghana
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone-alt"></i>
+                                <div>
+                                    <strong>Phone</strong><br>
+                                    +233 24 123 4567
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <strong>Email</strong><br>
+                                    info@innueloconsult.com
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <strong>Business Hours</strong><br>
+                                    Mon-Fri: 8:30AM - 5:30PM<br>
+                                    Sat: 9:00AM - 1:00PM
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3>Send Us a Message</h3>
+                        <div class="contact-form">
+                            <form>
+                                <div class="form-group">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" id="name" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" class="form-control">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="subject">Subject</label>
+                                    <input type="text" id="subject" class="form-control" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="message">Message</label>
+                                    <textarea id="message" class="form-control" required></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 20px;">
+                        <div class="logo-icon">I</div>
+                        <h1 style="color: white;">INNUELO</h1>
+                    </div>
+                    <p style="color: #cbd5e1; margin-bottom: 20px;">Empowering businesses with strategic financial solutions and expert consultancy services to drive sustainable growth and success.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" data-page="home">Home</a></li>
+                        <li><a href="#" data-page="about">About Us</a></li>
+                        <li><a href="#" data-page="services">Our Services</a></li>
+                        <li><a href="#" data-page="courses">Courses</a></li>
+                        <li><a href="#" data-page="pricing">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Business Consulting</a></li>
+                        <li><a href="#">SME Accounting</a></li>
+                        <li><a href="#">Tax Support</a></li>
+                        <li><a href="#">Business Training</a></li>
+                        <li><a href="#">Crypto Education</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <div class="container">
+                &copy; 2023 INNUELO CONSULTANCY SERVICES. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileNav = document.querySelector('.mobile-nav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileNav.classList.toggle('active');
+            });
+            
+            // Page navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page-content');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetPage = this.getAttribute('data-page');
+                    
+                    // Update active link
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show target page
+                    pages.forEach(page => {
+                        page.classList.remove('active');
+                        if (page.id === `${targetPage}-page`) {
+                            page.classList.add('active');
+                        }
+                    });
+                    
+                    // Close mobile menu if open
+                    mobileNav.classList.remove('active');
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                });
+            });
+            
+            // FAQ functionality
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    
+                    // Toggle active class on question
+                    this.classList.toggle('active');
+                    
+                    // Toggle active class on answer
+                    answer.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
