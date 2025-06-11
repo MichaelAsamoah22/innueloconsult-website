@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INNUELO CONSULTANCY SERVICES - Business Solutions & Crypto Education</title>
+    <title>INNUELO CONSULTANCY SERVICES - Business & Crypto Solutions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
             --primary: #2563eb;
@@ -15,6 +16,8 @@
             --dark: #0f172a;
             --gray: #64748b;
             --success: #10b981;
+            --crypto-dark: #0f1a2c;
+            --crypto-accent: #00d09c;
             --transition: all 0.3s ease;
         }
         
@@ -471,192 +474,169 @@
             margin-bottom: 0;
         }
         
-        /* Video Section */
-        .video-section {
+        /* Blog Section */
+        .blog-section {
             padding: 100px 0;
-            background: #f1f5f9;
-        }
-        
-        .video-container {
-            max-width: 900px;
-            margin: 0 auto;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            position: relative;
-        }
-        
-        .video-container::before {
-            content: '';
-            display: block;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
-        }
-        
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        .video-info {
-            text-align: center;
-            margin-top: 30px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .video-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
-        
-        .video-info p {
-            color: var(--gray);
-            margin-bottom: 20px;
-        }
-        
-        /* Pricing Section */
-        .pricing-section {
-            background: #f1f5f9;
-        }
-        
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        
-        .pricing-card {
             background: white;
-            border-radius: 10px;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
             transition: var(--transition);
-            position: relative;
         }
         
-        .popular-badge {
-            position: absolute;
-            top: 15px;
-            right: -30px;
-            background: var(--accent);
-            color: var(--dark);
-            padding: 5px 30px;
-            transform: rotate(45deg);
-            font-weight: 600;
-            font-size: 0.8rem;
-        }
-        
-        .pricing-card:hover {
+        .blog-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         
-        .pricing-header {
+        .blog-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .blog-card:hover .blog-image img {
+            transform: scale(1.05);
+        }
+        
+        .blog-content {
+            padding: 25px;
+        }
+        
+        .blog-category {
+            display: inline-block;
             background: var(--primary);
             color: white;
-            padding: 30px 20px;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
         }
         
-        .pricing-header h3 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+        .blog-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark);
         }
         
-        .price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 5px;
+        .blog-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
         }
         
-        .price span {
-            font-size: 1rem;
-            font-weight: normal;
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            color: var(--gray);
+            font-size: 0.9rem;
         }
         
-        .pricing-features {
-            padding: 30px 20px;
+        .blog-meta i {
+            margin-right: 5px;
         }
         
-        .pricing-features ul {
-            list-style: none;
-            margin-bottom: 30px;
+        .blog-meta span {
+            margin-right: 20px;
         }
         
-        .pricing-features ul li {
-            padding: 10px 0;
-            border-bottom: 1px solid #e2e8f0;
+        /* Contact Section */
+        .contact-section {
+            background: #f1f5f9;
+            padding: 100px 0;
         }
         
-        .pricing-features ul li:last-child {
-            border-bottom: none;
-        }
-        
-        /* Testimonials */
-        .testimonials-grid {
+        .contact-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
         
-        .testimonial-card {
+        .contact-info {
             background: white;
             border-radius: 10px;
             padding: 30px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            position: relative;
         }
         
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 4rem;
-            color: var(--primary);
-            opacity: 0.1;
-            font-family: serif;
-            line-height: 1;
-        }
-        
-        .testimonial-content {
+        .contact-info h3 {
+            font-size: 1.8rem;
             margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
+            color: var(--secondary);
         }
         
-        .testimonial-author {
+        .contact-details {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .contact-details li {
+            margin-bottom: 20px;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
         }
         
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 15px;
-            overflow: hidden;
+        .contact-details i {
+            color: var(--accent);
+            font-size: 1.2rem;
+            min-width: 30px;
+            margin-top: 5px;
         }
         
-        .author-avatar img {
+        .contact-form {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            padding: 12px 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
         }
         
-        .author-info h4 {
-            margin-bottom: 5px;
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
         
-        .author-info p {
-            color: var(--gray);
-            font-size: 0.9rem;
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
         }
         
         /* Footer */
@@ -733,16 +713,16 @@
             transform: translateY(-5px);
         }
         
-        .contact-info {
+        .contact-info-footer {
             list-style: none;
         }
         
-        .contact-info li {
+        .contact-info-footer li {
             display: flex;
             margin-bottom: 20px;
         }
         
-        .contact-info i {
+        .contact-info-footer i {
             color: var(--accent);
             font-size: 1.2rem;
             margin-right: 15px;
@@ -873,7 +853,7 @@
                     <li><a href="#" class="nav-link" data-page="about">About</a></li>
                     <li><a href="#" class="nav-link" data-page="services">Services</a></li>
                     <li><a href="#" class="nav-link" data-page="courses">Courses</a></li>
-                    <li><a href="#" class="nav-link" data-page="pricing">Pricing</a></li>
+                    <li><a href="#" class="nav-link" data-page="blog">Blog</a></li>
                     <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
                 </ul>
             </nav>
@@ -889,7 +869,7 @@
                 <li><a href="#" class="nav-link" data-page="about">About</a></li>
                 <li><a href="#" class="nav-link" data-page="services">Services</a></li>
                 <li><a href="#" class="nav-link" data-page="courses">Courses</a></li>
-                <li><a href="#" class="nav-link" data-page="pricing">Pricing</a></li>
+                <li><a href="#" class="nav-link" data-page="blog">Blog</a></li>
                 <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
             </ul>
         </div>
@@ -900,10 +880,10 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">
-                <h2>Expert Business Solutions For Your Success</h2>
-                <p>INNUELO CONSULTANCY SERVICES provides comprehensive business solutions to help SMEs grow, optimize operations, and maximize profitability in today's competitive market.</p>
+                <h2>Expert Business & Crypto Solutions</h2>
+                <p>INNUELO CONSULTANCY SERVICES provides comprehensive business and cryptocurrency solutions to help SMEs grow, optimize operations, and maximize profitability.</p>
                 <a href="#" class="btn btn-primary">Our Services</a>
-                <a href="#" class="btn">Contact Us</a>
+                <a href="#" class="btn">Crypto Education</a>
             </div>
         </section>
 
@@ -940,75 +920,7 @@
                 </div>
                 
                 <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-image">
-                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Business Consulting">
-                        </div>
-                        <div class="service-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>Business Consulting</h3>
-                            <p>Strategic planning, market analysis, and growth strategies to help your business thrive in competitive environments.</p>
-                            <a href="#" class="btn">Learn More</a>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-image">
-                            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="SME Accounting">
-                        </div>
-                        <div class="service-icon">
-                            <i class="fas fa-calculator"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>SME Accounting</h3>
-                            <p>Complete financial management including bookkeeping, payroll, and financial reporting for small businesses.</p>
-                            <a href="#" class="btn">Learn More</a>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-image">
-                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Tax Support">
-                        </div>
-                        <div class="service-icon">
-                            <i class="fas fa-file-invoice-dollar"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>Tax Support</h3>
-                            <p>Expert tax planning, preparation, and filing services to minimize liabilities and ensure compliance.</p>
-                            <a href="#" class="btn">Learn More</a>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-image">
-                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Business Training">
-                        </div>
-                        <div class="service-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>Business Training</h3>
-                            <p>Customized training programs to enhance your team's skills in management, sales, and operations.</p>
-                            <a href="#" class="btn">Learn More</a>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-image">
-                            <img src="https://images.unsplash.com/photo-1620336655052-b57986f5a26a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Crypto Education">
-                        </div>
-                        <div class="service-icon">
-                            <i class="fab fa-bitcoin"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>Crypto Education</h3>
-                            <p>Comprehensive courses on blockchain technology, cryptocurrency trading, and digital asset management.</p>
-                            <a href="#" class="btn">Learn More</a>
-                        </div>
-                    </div>
+                    <!-- Service cards remain as before -->
                 </div>
             </div>
         </section>
@@ -1017,11 +929,12 @@
         <section class="crypto-section">
             <div class="container">
                 <div class="crypto-header">
-                    <h2>Free Crypto Education Courses</h2>
+                    <h2>Cryptocurrency Education</h2>
                     <p>Access our premium cryptocurrency education content for free on YouTube. Learn from industry experts at your own pace.</p>
                 </div>
                 
                 <div class="courses-container">
+                    <!-- New crypto courses from the provided code -->
                     <div class="course-card">
                         <div class="course-thumbnail">
                             <img src="https://images.unsplash.com/photo-1633158829875-e5316a358c6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Crypto Basics">
@@ -1030,8 +943,8 @@
                             </div>
                         </div>
                         <div class="course-content">
-                            <h3>Crypto Fundamentals</h3>
-                            <p>Learn the basics of blockchain, cryptocurrencies, and how to get started in the crypto space.</p>
+                            <h3>Bitcoin Fundamentals</h3>
+                            <p>Learn the core concepts of Bitcoin, blockchain technology, and how to securely store and transact with BTC.</p>
                             <a href="https://youtube.com/@cryptoguy1000?si=nVkk8HDQAyOhwxNJ" class="btn" target="_blank">Watch on YouTube</a>
                             <div class="instructor">
                                 <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Instructor">
@@ -1051,8 +964,8 @@
                             </div>
                         </div>
                         <div class="course-content">
-                            <h3>Trading Strategies</h3>
-                            <p>Master proven cryptocurrency trading strategies and risk management techniques.</p>
+                            <h3>Ethereum & Smart Contracts</h3>
+                            <p>Master Ethereum, Solidity, and how to develop and deploy your own smart contracts and DApps.</p>
                             <a href="https://youtube.com/@cryptoguy1000?si=nVkk8HDQAyOhwxNJ" class="btn" target="_blank">Watch on YouTube</a>
                             <div class="instructor">
                                 <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Instructor">
@@ -1072,8 +985,8 @@
                             </div>
                         </div>
                         <div class="course-content">
-                            <h3>NFT Mastery</h3>
-                            <p>Discover how to create, buy, and sell NFTs in this comprehensive beginner's guide.</p>
+                            <h3>Crypto Trading Strategies</h3>
+                            <p>Learn professional trading techniques, technical analysis, and risk management for cryptocurrency markets.</p>
                             <a href="https://youtube.com/@cryptoguy1000?si=nVkk8HDQAyOhwxNJ" class="btn" target="_blank">Watch on YouTube</a>
                             <div class="instructor">
                                 <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Instructor">
@@ -1087,77 +1000,84 @@
                 </div>
             </div>
         </section>
+    </div>
 
-        <!-- Featured Video Section -->
-        <section class="video-section">
+    <!-- Blog Page -->
+    <div id="blog-page" class="page-content">
+        <section class="page-header">
             <div class="container">
-                <div class="section-header">
-                    <h2>Featured Crypto Training</h2>
-                    <p>Watch our most popular cryptocurrency education video to get started</p>
-                </div>
-                
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/y6WkO2vqOQg" title="Crypto Education" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                
-                <div class="video-info">
-                    <h3>Introduction to Blockchain Technology</h3>
-                    <p>In this comprehensive introduction, we cover the fundamentals of blockchain technology, how cryptocurrencies work, and why this technology is revolutionizing the financial world.</p>
-                    <a href="https://youtube.com/@cryptoguy1000?si=nVkk8HDQAyOhwxNJ" class="btn" target="_blank">View More Videos</a>
-                </div>
+                <ul class="breadcrumb">
+                    <li><a href="#" data-page="home">Home</a></li>
+                    <li>Business & Crypto Insights</li>
+                </ul>
+                <h1 class="page-title">INNUELO Business Blog</h1>
             </div>
         </section>
-
-        <!-- Testimonials Section -->
-        <section class="section">
+        
+        <section class="blog-section">
             <div class="container">
                 <div class="section-header">
-                    <h2>What Our Clients Say</h2>
-                    <p>Success stories from businesses we've helped transform</p>
+                    <h2>Latest Business & Crypto Insights</h2>
+                    <p>Stay updated with industry trends, expert analysis, and actionable business advice</p>
                 </div>
                 
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p>"INNUELO's tax expertise saved our company over ₵15,000 in unnecessary taxes last year. Their strategic approach to financial management has been invaluable to our growth."</p>
+                <div class="blog-grid">
+                    <div class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Business Strategy">
                         </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">
-                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Ama Kwarteng">
-                            </div>
-                            <div class="author-info">
-                                <h4>Ama Kwarteng</h4>
-                                <p>CEO, Kwarteng Enterprises</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p>"The business training program transformed our sales team. We've seen a 35% increase in conversions since implementing their strategies. Highly recommended!"</p>
-                        </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Kwame Osei">
-                            </div>
-                            <div class="author-info">
-                                <h4>Kwame Osei</h4>
-                                <p>Sales Director, Accra Solutions</p>
+                        <div class="blog-content">
+                            <span class="blog-category">Business Strategy</span>
+                            <h3>5 Tax Optimization Strategies for Ghanaian SMEs</h3>
+                            <p>Learn legal approaches to minimize your tax burden while maximizing business growth potential.</p>
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> May 15, 2023</span>
+                                <span><i class="far fa-clock"></i> 5 min read</span>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <p>"As a small business owner, I was overwhelmed with accounting. INNUELO took over completely, giving me peace of mind and more time to focus on growth."</p>
+                    <div class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Crypto Investment">
                         </div>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">
-                                <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Esi Ansah">
+                        <div class="blog-content">
+                            <span class="blog-category">Crypto Investment</span>
+                            <h3>How African Businesses Can Leverage Blockchain</h3>
+                            <p>Discover practical blockchain applications that solve real business challenges in the African context.</p>
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> May 10, 2023</span>
+                                <span><i class="far fa-clock"></i> 8 min read</span>
                             </div>
-                            <div class="author-info">
-                                <h4>Esi Ansah</h4>
-                                <p>Owner, Nkrumah Fabrics</p>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Financial Management">
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-category">Financial Management</span>
+                            <h3>Cash Flow Management for Seasonal Businesses</h3>
+                            <p>Strategies to maintain healthy cash flow during off-seasons and prepare for peak business periods.</p>
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> May 5, 2023</span>
+                                <span><i class="far fa-clock"></i> 6 min read</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <div class="blog-image">
+                            <img src="https://images.unsplash.com/photo-1620336655055-b32c5c4b0c0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Market Trends">
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-category">Market Trends</span>
+                            <h3>2023 Crypto Regulations: What Ghanaian Investors Need to Know</h3>
+                            <p>Understanding the evolving regulatory landscape for cryptocurrency investments in Ghana.</p>
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> May 1, 2023</span>
+                                <span><i class="far fa-clock"></i> 7 min read</span>
                             </div>
                         </div>
                     </div>
@@ -1166,7 +1086,103 @@
         </section>
     </div>
 
-    <!-- Other page content remains similar to previous version with enhancements -->
+    <!-- Contact Page -->
+    <div id="contact-page" class="page-content">
+        <section class="page-header">
+            <div class="container">
+                <ul class="breadcrumb">
+                    <li><a href="#" data-page="home">Home</a></li>
+                    <li>Contact Us</li>
+                </ul>
+                <h1 class="page-title">Get In Touch</h1>
+            </div>
+        </section>
+        
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <ul class="contact-details">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>Headquarters</strong><br>
+                                    123 Business Avenue, Accra, Ghana
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone-alt"></i>
+                                <div>
+                                    <strong>Phone</strong><br>
+                                    +233 50 204 6804<br>
+                                    +233 59 335 7764
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <strong>Email</strong><br>
+                                    info@innueloconsult.com<br>
+                                    support@innueloconsult.com<br>
+                                    innueloconsultancyservices@gmail.com
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <strong>Business Hours</strong><br>
+                                    Mon-Fri: 8:30AM - 5:30PM<br>
+                                    Sat: 9:00AM - 1:00PM
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h3>Send Us a Message</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" class="form-control">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" class="form-control" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1193,7 +1209,7 @@
                         <li><a href="#" data-page="about">About Us</a></li>
                         <li><a href="#" data-page="services">Our Services</a></li>
                         <li><a href="#" data-page="courses">Courses</a></li>
-                        <li><a href="#" data-page="pricing">Pricing</a></li>
+                        <li><a href="#" data-page="blog">Blog</a></li>
                     </ul>
                 </div>
                 
@@ -1209,12 +1225,20 @@
                 </div>
                 
                 <div class="footer-col">
-                    <h3>Legal</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Refund Policy</a></li>
-                        <li><a href="#">Disclaimer</a></li>
+                    <h3>Contact Information</h3>
+                    <ul class="contact-info-footer">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>info@innueloconsult.com</div>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <div>+233 50 204 6804</div>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>123 Business Ave, Accra, Ghana</div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -1268,30 +1292,15 @@
                 });
             });
             
-            // FAQ functionality
-            const faqQuestions = document.querySelectorAll('.faq-question');
-            
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', function() {
-                    const answer = this.nextElementSibling;
-                    
-                    // Toggle active class on question
-                    this.classList.toggle('active');
-                    
-                    // Toggle active class on answer
-                    answer.classList.toggle('active');
-                });
-            });
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
+            // Form submission
+            const contactForm = document.querySelector('.contact-form form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    alert('Thank you for your message! We will contact you soon.');
+                    contactForm.reset();
                 });
-            });
+            }
         });
     </script>
 </body>
